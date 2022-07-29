@@ -35,6 +35,8 @@ if (isset($imagePath) && $imagePath != ''){
     }
     $originalSize = $originalX / $originalY;
     $imageData = imagecreatetruecolor($originalSize*$imageSize, $imageSize);
+    imagealphablending($imageData, false);
+    imagesavealpha($imageData, true);
     imagecopyresized($imageData, $originalImage, 0, 0, 0, 0, $originalSize*$imageSize, $imageSize, $originalX, $originalY);
 
     header('Content-type: image/jpg');
